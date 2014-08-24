@@ -1,14 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JoeyBlog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>joey's blog</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">joey's blog</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <div class="navbar-right">
+            <% if user_signed_in? %>
+              <%= link_to('logout', destroy_user_session_path, :method => :delete) %>
+              <%= link_to 'new article', new_article_path %>
+            <% else %>
+                <a href="/users/sign_in">login</a>
+            <% end %>
+          </div>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
 
+    <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <div class="blog-header">
+          <p class="lead blog-description">a student trying to learn by doing.</p>
+        </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+            <%= yield %>
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>about</h4>
+            <p>Hello and welcome! You have found this site through a link I have shared, most likely. If not, I guess…welcome?</p>
+
+            <p>My background has me dabbling in all these: communications, marketing, business, hot dogs, paintball, video editing, video production, project management, web development, graphic design, app development, print layout design, snowboarding and much much more. Those keywords have applied to my job/education for the past 10 years. I graduated with my B.S. from University of Wisconsin in Communications, an A.A.S. in Video and Motion Graphics, as well as an M.B.A. from University of Wisconsin - Madison.</p>
+
+            <p>But right now, and for the next couple of months I will just be - Joey, Chicago Bobolinks DBC hopeful.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>about town</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://github.com/axhi">GitHub</a></li>
+              <li><a href="http://twitter.com/sabanimals">Twitter</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
 </body>
+
 </html>
