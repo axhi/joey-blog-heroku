@@ -2,15 +2,15 @@
 <%= link_to 'New article', new_article_path, :class => "btn btn-default navbar-btn" %>
 <table class="table table-hover">
   <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="3"><center>Functions</center></th>
+    <th>title</th>
+    <th>summary</th>
+    <th colspan="3"><center>functions</center></th>
   </tr>
  
 <% @articles.each do |article| %>
   <tr>
     <td><%= article.title %></td>
-    <td><%= article.text %></td>
+    <td><%= article.short %>.</td>
     <td><%= link_to 'Show', article_path(article) %></td>
     <td><%= link_to 'Edit', edit_article_path(article) %></td>
     <td><%= link_to 'Destroy', article_path(article),

@@ -1,9 +1,8 @@
 <% @articles.reverse.each do |article| %>
   <div class="blog-post">
-    <%= link_to(article_path(article)) do %>
-      <h2 class="blog-post-title"><%= article.title %></h2>
-    <% end %>
+    <h2 class="blog-post-title"><%= article.title %></h2>
     <p class="blog-post-meta">by: <%= article.author %></p>
-    <p><%= article.text %></p>
+    <p><%= article.short %>...</p>
+    <%= link_to 'read more', article_path(article), :class => "btn btn-success" %>
   </div>
 <% end %>
