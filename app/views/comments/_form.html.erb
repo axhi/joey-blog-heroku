@@ -1,14 +1,15 @@
 <%= form_for([@article, @article.comments.build]) do |f| %>
+   <div class="input-group"> 
+     <span class="input-group-addon"><span class="glyphicon glyphicon-th-large"></span></span>
+      <%= f.text_field :commenter, :class => "form-control", :placeholder => "name" %>
+  </div>
+  <br>
+  <div class="input-group"> 
+    <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+    <%= f.text_area :body, :class => "form-control", :placeholder => "comment", :rows => 4 %>
+  </div>
   <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-info navbar-btn" %>
   </p>
   
 <% end %>

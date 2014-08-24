@@ -21,33 +21,36 @@
         </div>
         <div class="navbar-collapse collapse">
           <div class="navbar-right">
+          <ul class="nav navbar-nav">
             <% if user_signed_in? %>
-              <%= link_to('logout', destroy_user_session_path, :method => :delete) %>
-              <%= link_to 'new article', new_article_path %>
+            <li><%= link_to('logout', destroy_user_session_path, :method => :delete) %></li>
+            <li><%= link_to 'new article', new_article_path %></li>
+            </ul>
             <% else %>
-                <a href="/users/sign_in">login</a>
+              <%= render "/welcome/login" %>
             <% end %>
           </div>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
-
-    <div class="container">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <div class="blog-header">
-          <p class="lead blog-description">a student trying to learn by doing.</p>
-        </div>
+    <div class="jumbotron">
+      <h2>"any fool can know. the point is to understand."</h2>
+      <span>- Albert Einstein</span>
+    </div>
+        <div class="container">
+        
 
       <div class="row">
-
+              <% if notice %>
+        <div class="alert alert-info" role="alert"><%= notice %></div>
+      <% elsif alert %>
+        <div class="alert alert-warning" role="alert"><%= alert %></div>
+      <% end %>
         <div class="col-sm-8 blog-main">
-
             <%= yield %>
-
         </div><!-- /.blog-main -->
 
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-sm-4 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
             <h4>about</h4>
             <p>Hello and welcome! You have found this site through a link I have shared, most likely. If not, I guess…welcome?</p>
